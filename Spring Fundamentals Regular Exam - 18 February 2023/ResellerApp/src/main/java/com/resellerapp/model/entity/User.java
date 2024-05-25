@@ -18,7 +18,8 @@ public class User extends BaseEntity{
     private String username;
 
     @Column(nullable = false)
-    @Length(min = 3, max = 20)
+    @Length(min = 3)
+    //removing max 20 for password length because it will be encoded before the save
     private String password;
 
     @Column(unique = true, nullable = false)
