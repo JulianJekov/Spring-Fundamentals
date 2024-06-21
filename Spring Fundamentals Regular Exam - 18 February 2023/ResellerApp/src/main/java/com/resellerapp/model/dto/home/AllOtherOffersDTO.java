@@ -1,7 +1,5 @@
 package com.resellerapp.model.dto.home;
 
-import com.resellerapp.model.enums.ConditionName;
-
 import java.math.BigDecimal;
 
 public class AllOtherOffersDTO {
