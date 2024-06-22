@@ -73,3 +73,9 @@ footer {
 .table td, .table th {
     padding: 0.15rem;
 }
+
+.my-btn {
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}

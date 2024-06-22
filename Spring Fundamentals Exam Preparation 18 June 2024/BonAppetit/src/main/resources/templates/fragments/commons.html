@@ -12,21 +12,26 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg bg-nav rounded">
-        <a class="nav-link text-primary active h5 text-stroke" href="/">Bon App-étit</a>
-        <a class="nav-link text-primary active h5 text-stroke" href="/">Add Recipe</a>
+        <a class="nav-link text-primary active h5 text-stroke" th:unless="${@currentUser.logged}" th:href="@{/}">Bon App-étit</a>
+        <a class="nav-link text-primary active h5 text-stroke" th:if="${@currentUser.logged}" th:href="@{/home}">Bon App-étit</a>
+        <a class="nav-link text-primary active h5 text-stroke" th:if="${@currentUser.logged}" th:href="@{/recipes/add}">Add Recipe</a>
 
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav row">
-                <li class="nav-item col-md-4">
-                    <a class="nav-link text-primary active h5 text-stroke" href="/">Login</a>
+                <li  th:unless="${@currentUser.logged}"  class="nav-item col-md-4">
+                    <a class="nav-link text-primary active h5 text-stroke"th:href="@{/users/login}">Login</a>
                 </li>
 
-                <li class="nav-item col-md-4">
-                    <a class="nav-link text-primary active h5 text-stroke" href="/">Register</a>
+                <li class="nav-item col-md-4" th:unless="${@currentUser.logged}" >
+                    <a class="nav-link text-primary active h5 text-stroke" th:href="@{/users/register}">Register</a>
                 </li>
 
-                <li class="nav-item col-md-4">
-                    <a class="nav-link text-primary active h5 text-stroke" href="/">Logout</a>
+                <li class="nav-item col-md-4" th:if="${@currentUser.logged}">
+                    <form th:method="POST" th:action="@{/users/logout}">
+                        <button
+                                type="submit"
+                                class="nav-link text-primary active h5 text-stroke my-btn">Logout </button>
+                    </form>
                 </li>
             </ul>
         </div>
